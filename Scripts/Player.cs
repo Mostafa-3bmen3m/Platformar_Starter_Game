@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public LayerMask groundLayer;
     public Image healthImage;
 
+    public AudioClip coinSound;
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private Animator animator;
@@ -103,6 +105,16 @@ public class Player : MonoBehaviour
             {
                 Die();
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collison)
+    {
+        if (collison.gameObject.tag == "Coin")
+        {
+            coins++;
+            AudioSource.PlayClipAtPoint(coinSound, transform.position);
+            Destroy(collison.gameObject);
         }
     }
 
