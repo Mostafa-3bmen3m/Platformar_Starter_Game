@@ -24,11 +24,13 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public int extraJumpsValue = 1;
     private int extraJumps;
+    private AudioSource audioSource;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -113,7 +115,7 @@ public class Player : MonoBehaviour
         if (collison.gameObject.tag == "Coin")
         {
             coins++;
-            AudioSource.PlayOneShot(coinSound);
+            audioSource.PlayOneShot(coinSound);
             Destroy(collison.gameObject);
         }
     }
