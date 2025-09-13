@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         if (collison.gameObject.tag == "Coin")
         {
             coins++;
-            AudioSource.PlayClipAtPoint(coinSound, transform.position);
+            AudioSource.PlayOneShot(coinSound);
             Destroy(collison.gameObject);
         }
     }
